@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   public isLogin: boolean;
   public nameUser: string;
   public emailUser: string;
+  public publicPhoto: string;
   constructor(
     public auth: AuthService,
     public routet: Router
@@ -23,6 +24,7 @@ export class NavbarComponent implements OnInit {
         this.isLogin = true;
         this.nameUser = author.displayName;
         this.emailUser = author.email;
+        this.publicPhoto = author.photoURL;
       } else {
         this.isLogin = false;
       }
