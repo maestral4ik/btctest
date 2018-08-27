@@ -9,12 +9,24 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
 
+  public isLogin: boolean;
+  public nameUser: string;
+  public emailUser: string;
   constructor(
     public auth: AuthService,
     public routet: Router
   ) { }
 
   ngOnInit() {
+    this.auth.getAuth().subscribe( author => {
+      if(author){
+        this.isLogin = true;
+        this.nameUser = author.displayName;
+        this.emailUser = author.email;
+      } else {
+        this.isLogin = false;
+      }
+    })
   }
 
   onClickLogout(){
